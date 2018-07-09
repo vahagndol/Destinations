@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locations.API", "src\Locati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Places.API", "src\Places.API\Places.API.csproj", "{0C546F4E-0A5E-4159-865A-E2C23AB0C82D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{81CED7D5-EFDB-4734-8616-787C37AF7886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{7CADC0F2-2C9E-4345-8605-0B1E21DD57FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{0C546F4E-0A5E-4159-865A-E2C23AB0C82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C546F4E-0A5E-4159-865A-E2C23AB0C82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C546F4E-0A5E-4159-865A-E2C23AB0C82D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81CED7D5-EFDB-4734-8616-787C37AF7886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81CED7D5-EFDB-4734-8616-787C37AF7886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81CED7D5-EFDB-4734-8616-787C37AF7886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81CED7D5-EFDB-4734-8616-787C37AF7886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CADC0F2-2C9E-4345-8605-0B1E21DD57FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CADC0F2-2C9E-4345-8605-0B1E21DD57FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CADC0F2-2C9E-4345-8605-0B1E21DD57FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CADC0F2-2C9E-4345-8605-0B1E21DD57FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

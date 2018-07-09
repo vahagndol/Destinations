@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { LocationsComponent } from './locations/locations.component';
+import { PlacesComponent } from './places/places.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LocationsComponent } from './locations/locations.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    LocationsComponent
+    LocationsComponent,
+    PlacesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,6 +28,7 @@ import { LocationsComponent } from './locations/locations.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'locations', component: LocationsComponent },
+      { path: 'places', component: PlacesComponent },
     ])
   ],
   providers: [],

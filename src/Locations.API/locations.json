@@ -1,0 +1,20 @@
+﻿[
+    {
+        "id": 0,
+        "name": "Amsterdam",
+        "imageUri": "http://www.pinpopular.com/wp-content/uploads/2014/08/Amsterdam-Lights.jpg",
+        "summary": "Amsterdam is the Netherlands’ capital, known for its artistic heritage, elaborate canal system and narrow houses with gabled facades, legacies of the city’s 17th-century Golden Age. Its Museum District houses the Van Gogh Museum, works by Rembrandt and Vermeer at the Rijksmuseum, and modern art at the Stedelijk. Cycling is key to the city’s character, and there are numerous bike paths."
+    },
+    {
+        "id": 1,
+        "name": "The Hague",
+        "imageUri": "https://www.holland.com/static/design/C3C36339-E131-43DC-9C3A-424F695D025A-592E-fsm/gfx/background.jpg",
+        "summary": "The Hague is a city on the North Sea coast of the western Netherlands. Its Gothic-style Binnenhof (or Inner Court) complex is the seat of the Dutch parliament, and 16th-century Noordeinde Palace is the king’s workplace. The city is also home to the U.N.’s International Court of Justice, headquartered in the Peace Palace, and the International Criminal Court."
+    },
+    {
+        "id": 2,
+        "name": "Rotterdam",
+        "imageUri": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Erasmusbrug_seen_from_Euromast.jpg/1200px-Erasmusbrug_seen_from_Euromast.jpg",
+        "summary": "Rotterdam is a major port city in the Dutch province of South Holland. The Maritime Museum's vintage ships and exhibits trace the city's seafaring history. The 17th-century Delfshaven neighborhood is home to canalside shopping and Pilgrim Fathers Church, where pilgrims worshiped before sailing to America. After being almost completely reconstructed following WWII, the city is now known for bold, modern architecture."
+    }
+]

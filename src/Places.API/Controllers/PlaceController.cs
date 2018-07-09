@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Places.API.Controllers
 {
@@ -11,6 +12,13 @@ namespace Places.API.Controllers
     [ApiController]
     public class PlaceController : ControllerBase
     {
+        private readonly ILogger<PlaceController> _logger;
+
+        public PlaceController(ILogger<PlaceController> logger)
+        {
+            _logger = logger;
+        }
+
         // GET api/place
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()

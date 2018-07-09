@@ -4,3 +4,20 @@
 
 <p *ngIf="!locations"><em>Loading...</em></p>
 
+<table class='table' *ngIf="locations">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Summary</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let location of locations">
+    <td>
+      {{ location.name }}
+    </td>
+    <td>{{ location.summary }}</td>
+    <td><img width="100" height="100" src="{{ location.imageUri }}"></td>
+  </tr>
+  </tbody>
+</table>

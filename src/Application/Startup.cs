@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -5,7 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Destinations
+namespace Application
 {
     public class Startup
     {
@@ -25,6 +26,12 @@ namespace Destinations
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
+            });
+
+            // Add the http client to use to call our locations api.
+            services.AddHttpClient("locations", client =>
+            {
+                client.BaseAddress = new Uri(Configuration["LocationsUrl"]);
             });
         }
 

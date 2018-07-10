@@ -7,11 +7,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Applicat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Locations.API", "src\Locations.API\Locations.API.csproj", "{589419CD-85F0-4600-A5DE-DCFC2154D228}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Places.API", "src\Places.API\Places.API.csproj", "{0C546F4E-0A5E-4159-865A-E2C23AB0C82D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Places.API", "src\Places.API\Places.API.csproj", "{0C546F4E-0A5E-4159-865A-E2C23AB0C82D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{81CED7D5-EFDB-4734-8616-787C37AF7886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Domain\Domain.csproj", "{81CED7D5-EFDB-4734-8616-787C37AF7886}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{7CADC0F2-2C9E-4345-8605-0B1E21DD57FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{7CADC0F2-2C9E-4345-8605-0B1E21DD57FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{50976B97-14AE-44E5-B6B1-3C72BC667D63}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

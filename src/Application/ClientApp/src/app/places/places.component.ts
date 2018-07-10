@@ -9,15 +9,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PlacesComponent {
   public places: Places[];
-  public cityName: string;
-  public cityId: string;
+  public locationName: string;
+  public locationId: string;
 
   constructor(private route: ActivatedRoute,
     http: HttpClient,
     @Inject('BASE_URL') baseUrl: string) {
-    this.cityId = this.route.snapshot.paramMap.get("cityId");
-    this.cityName = this.route.snapshot.paramMap.get("cityName");
-    http.get<Places[]>(baseUrl + 'api/places/GetAll/' + this.cityId).subscribe(result => {
+    this.locationId = this.route.snapshot.paramMap.get("locationId");
+    this.locationName = this.route.snapshot.paramMap.get("locationName");
+    http.get<Places[]>(baseUrl + 'api/places/GetAll/' + this.locationId).subscribe(result => {
       this.places = result;
       },
       error => console.error(error));
@@ -25,6 +25,7 @@ export class PlacesComponent {
 }
 
 interface Places {
+  cityId: string,
   id: string;
   name: string;
   summary: string;

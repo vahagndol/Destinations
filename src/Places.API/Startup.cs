@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Entities;
+using Infrastructure.Context;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +13,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Places.API.Helper;
 
-namespace Places.API
+namespace Locations.API
 {
     public class Startup
     {
@@ -25,6 +30,11 @@ namespace Places.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging();
+            
+            services.AddSingleton<IContextReader<Place>, PlaceContextReader<Place>>();
+            services.AddSingleton<IApplicationDbContext<Place>, ApplicationDbContext<Place>>();
+            services.AddSingleton<IRepository<Place>, Repository<Place>>();
+            services.AddSingleton<IEntityService<Place>, PlaceService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

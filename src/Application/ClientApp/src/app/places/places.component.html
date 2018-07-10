@@ -1,3 +1,18 @@
-<h1>Top places to see in </h1>
+<h1>Top places to see in {{locationName}} </h1>
 <p>This component demonstrates Must see from the server.</p>
 <p *ngIf="!places"><em>Loading...</em></p>
+<table class='table' *ngIf="places">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Summary</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let place of places">
+    <td>{{ place.name }}</td>
+    <td>{{ place.summary }}</td>
+    <td><img width="100" height="100" src="{{ place.imageUri }}"></td>
+  </tr>
+  </tbody>
+</table>

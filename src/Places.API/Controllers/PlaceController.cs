@@ -2,28 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Entities;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Places.API.Controllers
+namespace Locations.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class PlaceController : ControllerBase
     {
+        private readonly IEntityService<Place> _placeService;
         private readonly ILogger<PlaceController> _logger;
 
-        public PlaceController(ILogger<PlaceController> logger)
+        public PlaceController(IEntityService<Place> placeService, ILogger<PlaceController> logger)
         {
+            _placeService = placeService;
             _logger = logger;
         }
 
         // GET api/place
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Place>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_placeService.GetItems());
         }
+
+        // GET api/place
+        [HttpGet("{placeId}")]
+        public ActionResult<IEnumerable<Place>> Get(string placeId)
+        {
+            return Ok(_placeService.GetItems(placeId));
+        }
+
+       
     }
 }

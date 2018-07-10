@@ -28,7 +28,7 @@ import { PlacesComponent } from './places/places.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'locations', component: LocationsComponent },
-      { path: 'places', component: PlacesComponent },
+      { path: 'places/:locationId/:locationName', component: PlacesComponent },
     ])
   ],
   providers: [],

@@ -1,0 +1,25 @@
+﻿[
+    {
+        "cityId": 0,
+        "places": [
+            {
+                "id": 0,
+                "name": "Royal Palace of Amsterdam",
+                "imageUri": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Palacio_Real%2C_%C3%81msterdam%2C_Pa%C3%ADses_Bajos%2C_2016-05-30%2C_DD_07-09_HDR.jpg/2880px-Palacio_Real%2C_%C3%81msterdam%2C_Pa%C3%ADses_Bajos%2C_2016-05-30%2C_DD_07-09_HDR.jpg",
+                "summary": "The Royal Palace of Amsterdam in Amsterdam is one of three palaces in the Netherlands which are at the disposal of the monarch by Act of Parliament."
+            },
+            {
+                "id": 1,
+                "name": "Rijksmuseum",
+                "imageUri": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Amsterdam_-_Rijksmuseum_-_panoramio_-_Nikolai_Karaneschev.jpg",
+                "summary": "The Rijksmuseum is a Dutch national museum Amsterdamdedicated to arts and history in Amsterdam. The museum is located at the Museum Square in the borough Amsterdam South, close to the Van Gogh Museum, the Stedelijk Museum Amsterdam, and the Concertgebouw."
+            },
+            {
+                "id": 2,
+                "name": "Vondelpark",
+                "imageUri": "https://upload.wikimedia.org/wikipedia/commons/3/37/Vondelpark.jpg",
+                "summary": "The Vondelpark is a public urban park of 47 hectares in Amsterdam, Netherlands. It is part of the borough of Amsterdam-Zuid and situated west from the Leidseplein and the Museumplein. The park was opened in 1865 and originally named the 'Nieuwe Park', but later renamed to 'Vondelpark', after the 17th-century playwright and poet Joost van den Vondel."
+            }
+        ]
+    }
+]

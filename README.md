@@ -16,13 +16,17 @@ The application interacts with microservices using HTTP requests.
 ## Running the demonstration application
 - Clone this repository.
 - Build projects: 
-> dotnet build src\Locations.API
-> dotnet build src\Places.API
-> dotnet build src\Application
+```
+ dotnet build src\Locations.API
+dotnet build src\Places.API
+dotnet build src\Application
+```
 - Run projects:
-> dotnet run --project src\Locations.API\Locations.API.csproj
-> dotnet run --project src\Places.API\Places.API.csproj
-> dotnet run --project src\Application\Application.csproj
+```
+dotnet run --project src\Locations.API\Locations.API.csproj
+dotnet run --project src\Places.API\Places.API.csproj
+dotnet run --project src\Application\Application.csproj
+```
 - Navigate to the URLs listed below.
 
 Another option:

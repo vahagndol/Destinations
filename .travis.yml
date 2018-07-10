@@ -1,0 +1,11 @@
+language: csharp
+mono: none
+dotnet: 2.1.0
+script:
+- dotnet build Domain
+- dotnet build Infrastructure
+- dotnet build Locations.API
+- dotnet build Places.API
+- dotnet build Application
+- dotnet build Locations.API.Tests
+- dotnet test Locations.API.Tests

@@ -2,10 +2,10 @@ language: csharp
 mono: none
 dotnet: 2.1.300
 script:
-- dotnet build Domain
-- dotnet build Infrastructure
-- dotnet build Locations.API
-- dotnet build Places.API
-- dotnet build Application
-- dotnet build Locations.API.Tests
-- dotnet test Locations.API.Tests
+- dotnet build src\Domain
+- dotnet build src\Infrastructure
+- dotnet build src\Locations.API
+- dotnet build src\Places.API
+- dotnet build src\Application
+- dotnet build tests\Locations.API.Tests
+- dotnet test tests\Locations.API.Tests

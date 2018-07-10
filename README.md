@@ -16,38 +16,33 @@ The application interacts with microservices using HTTP requests.
 ## Running the demonstration application
 - Clone this repository.
 - Build projects: 
-> *dotnet build src\Locations.API
-> *dotnet build src\Places.API
-> *dotnet build src\Application
+> dotnet build src\Locations.API
+> dotnet build src\Places.API
+> dotnet build src\Application
 - Run projects:
-> *dotnet run --project src\Locations.API\Locations.API.csproj
-> *dotnet run --project src\Places.API\Places.API.csproj
-> *dotnet run --project src\Application\Application.csproj
+> dotnet run --project src\Locations.API\Locations.API.csproj
+> dotnet run --project src\Places.API\Places.API.csproj
+> dotnet run --project src\Application\Application.csproj
 - Navigate to the URLs listed below.
 
 Another option:
 - Loading the project in Visual Studio.
-- Start the debugger with docker-compose.
-- This should load the Basket API swagger page.
+- Build solution
+- Run Locations.API.
+- Run Places.API.
+- Run Application.
 
-3 containers should be created:
-- **basketapi** - http://localhost:55311/swagger/index.html
-- **clientapp** - http://localhost:55322/swagger/index.html
-- **rabbit** - http://localhost:15672/#/
-  - Management page for monitoring.
-  - Username: guest
-  - Password: guest
+3 console should be created:
+- **Locations.API** - http://localhost:5001/swagger/index.html
+- **Places.API** - http://localhost:4001/swagger/index.html
+- **Application** - http://localhost:56986/
 
 This solution was developed on Windows 10, using:
 - Visual Studio 15.7.4
-- .NET Core SDK 2.1.301
-- Docker 18.03.1 using Linux containers.
-- RabbitMQ 3.7.6 from Docker.
+- .NET Core SDK 2.1.300
 
-![Diagram](Diagram2.png)
-
-## Using the API
-- The swagger page for the Basket API shows all of the actions available to users of the API.
-- The swagger page for the ClientApp shows how a potential user could use the API.
-- The Client App can simulate another service changing the price of a product. This publishes a price change event to a message broker.  The Basket API is subscribed to this broker and will update the price of this product in any basket it happens to be in.
-- The Client App also demonstrates the use of the circuit breaker pattern.  This can be seen by disabling the Basket API container and making a few requests from the client app.  Once the Basket API is turned back on, requests will resume after 1 minute.  
+## Azure
+The latest versions of Applications and API Services deployed to Azure Cloud:
+- **Locations.API** - https://destinationslocationsapi.azurewebsites.net/swagger/index.html
+- **Places.API** - https://destinationsplacesapi.azurewebsites.net/swagger/index.html
+- **Application** - https://destinationswebapp.azurewebsites.net/

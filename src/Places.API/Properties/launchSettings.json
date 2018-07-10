@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/place",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "Places.API": {
         "commandName": "Project",
         "launchBrowser": true,
-        "launchUrl": "api/place",
+        "launchUrl": "swagger",
         "applicationUrl": "http://localhost:4001",
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"

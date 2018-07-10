@@ -1,4 +1,5 @@
 # Destinations Demo Application
+[![Build Status](https://travis-ci.com/vahagndol/Destinations.svg?branch=master)](https://travis-ci.com/vahagndol/Destinations)
 
 ## Introduction
 This is a demonstartion of a destination web application using microservices.  

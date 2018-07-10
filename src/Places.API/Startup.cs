@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Infrastructure.Context;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
@@ -12,10 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Places.API.Helper;
 
-namespace Locations.API
+namespace Places.API
 {
     public class Startup
     {

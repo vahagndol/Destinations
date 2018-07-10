@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 
-namespace Locations.API.Tests.Setup
+namespace Places.API.Tests.Setup
 {
     public class TestContext : IDisposable
     {
@@ -25,7 +25,7 @@ namespace Locations.API.Tests.Setup
 
             _server = new TestServer(new WebHostBuilder()
                 .UseConfiguration(config)
-                .UseStartup<Locations.API.Startup>());
+                .UseStartup<Places.API.Startup>());
 
             Client = _server.CreateClient();
         }

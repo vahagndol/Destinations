@@ -5,36 +5,36 @@ using System.Threading.Tasks;
 using Domain.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using TestContext = Locations.API.Tests.Setup.TestContext;
+using TestContext = Places.API.Tests.Setup.TestContext;
 
-namespace Locations.API.Tests
+namespace Places.API.Tests
 {
     [TestClass]
-    public class LocationTests : IDisposable
+    public class PlacesTests : IDisposable
     {
         private readonly TestContext _context;
 
-        public LocationTests()
+        public PlacesTests()
         {
             _context = new TestContext();
         }
         [TestMethod]
-        public async Task GetLocationsTest()
+        public async Task GetPlacesTest()
         {
-            var response =  await _context.Client.GetAsync(new Uri($"/api/location", UriKind.Relative));
+            var response = await _context.Client.GetAsync(new Uri($"/api/place", UriKind.Relative));
             response.EnsureSuccessStatusCode();
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 
             var result = response.Content.ReadAsStringAsync().Result;
-            var resultModel = JsonConvert.DeserializeObject<List<Location>>(result);
-            Assert.AreEqual(resultModel.Count, 3);
+            var resultModel = JsonConvert.DeserializeObject<List<Place>>(result);
+            Assert.AreEqual(resultModel.Count, 9);
             Assert.AreEqual(resultModel[0].Id, 0);
             Assert.AreEqual(resultModel[1].Id, 1);
             Assert.AreEqual(resultModel[2].Id, 2);
         }
 
         #region IDisposable Support
-        private bool _disposed = false; 
+        private bool _disposed = false;
 
         protected virtual void Dispose(bool disposing)
         {

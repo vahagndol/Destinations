@@ -21,5 +21,51 @@
                 "summary": "The Vondelpark is a public urban park of 47 hectares in Amsterdam, Netherlands. It is part of the borough of Amsterdam-Zuid and situated west from the Leidseplein and the Museumplein. The park was opened in 1865 and originally named the 'Nieuwe Park', but later renamed to 'Vondelpark', after the 17th-century playwright and poet Joost van den Vondel."
             }
         ]
+    },
+    {
+        "cityId": 1,
+        "places": [
+            {
+                "id": 0,
+                "name": "Binnenhof",
+                "imageUri": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/The_Hague_Netherlands_Binnenhof-01.jpg/1200px-The_Hague_Netherlands_Binnenhof-01.jpg",
+                "summary": "The Binnenhof is a complex of buildings in the city centre of The Hague, Netherlands. It houses the meeting place of both houses of the States General of the Netherlands, as well as the Ministry of General Affairs and the office of the Prime Minister of the Netherlands."
+            },
+            {
+                "id": 1,
+                "name": "Scheveningen",
+                "imageUri": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/010_Scheveningen_pier_in_Hague%2C_Netherlands.jpg/1280px-010_Scheveningen_pier_in_Hague%2C_Netherlands.jpg",
+                "summary": "Scheveningen is a modern seaside resort with a long, sandy beach, an esplanade, a pier, and a lighthouse. The beach is popular for water sports such as windsurfing and kiteboarding."
+            },
+            {
+                "id": 2,
+                "name": "Peace Palace",
+                "imageUri": "https://upload.wikimedia.org/wikipedia/commons/f/fb/International_Court_of_Justice.jpg",
+                "summary": "The Peace Palace is an international law administrative building in The Hague, the Netherlands.It houses the International Court of Justice, the Permanent Court of Arbitration (PCA), the Hague Academy of International Law and the Peace Palace Library."
+            }
+        ]
+    },
+    {
+        "cityId": 2,
+        "places": [
+            {
+                "id": 0,
+                "name": "Erasmusbrug",
+                "imageUri": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/RotterdamMaasNederland.jpg/1155px-RotterdamMaasNederland.jpg",
+                "summary": "The Erasmus Bridge is a combined cable-stayed and bascule bridge in the centre of Rotterdam, second largest in the Netherlands. The bridge was named after Desiderius Erasmus a.k.a. Erasmus of Rotterdam."
+            },
+            {
+                "id": 1,
+                "name": "Euromast",
+                "imageUri": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Rotterdam_euromast.jpg/360px-Rotterdam_euromast.jpg",
+                "summary": "Euromast is an observation tower in Rotterdam, designed by Hugh Maaskant constructed between 1958 and 1960. Originally 101 m (331 ft) in height it was the tallest building in Rotterdam."
+            },
+            {
+                "id": 2,
+                "name": "Maasvlakte",
+                "imageUri": "https://upload.wikimedia.org/wikipedia/commons/5/52/Maasvlakte-europort.jpg",
+                "summary": "The Maasvlakte is a massive man-made westward extension of the Europoort port and industrial facility within the Port of Rotterdam. The Maasvlakte is built on land reclaimed from the North Sea."
+            }
+        ]
     }
 ]

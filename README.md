@@ -17,7 +17,7 @@ The application interacts with microservices using HTTP requests.
 - Clone this repository.
 - Build projects: 
 ```
- dotnet build src\Locations.API
+dotnet build src\Locations.API
 dotnet build src\Places.API
 dotnet build src\Application
 ```

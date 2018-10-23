@@ -44,9 +44,3 @@ Another option:
 This solution was developed on Windows 10, using:
 - Visual Studio 15.7.4
 - .NET Core SDK 2.1.300
-
-## Azure
-The latest versions of Applications and API Services deployed to Azure Cloud:
-- **Locations.API** - https://destinationslocationsapi.azurewebsites.net/swagger/index.html
-- **Places.API** - https://destinationsplacesapi.azurewebsites.net/swagger/index.html
-- **Application** - https://destinationswebapp.azurewebsites.net/

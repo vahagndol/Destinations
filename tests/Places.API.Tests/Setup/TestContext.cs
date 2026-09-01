@@ -47,7 +47,9 @@ namespace Places.API.Tests.Setup
                     services.AddScoped<IEntityService<Place>, PlaceService>();
 
                     // Controllers with modern routing
-                    services.AddControllers();
+                    // Ensure controllers from the API assembly are discovered by tests
+                    services.AddControllers()
+                            .AddApplicationPart(typeof(Places.API.Controllers.PlaceController).Assembly);
                 })
                 .Configure(app =>
                 {

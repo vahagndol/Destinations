@@ -47,7 +47,9 @@ namespace Locations.API.Tests.Setup
                     services.AddScoped<IEntityService<Location>, EntityService<Location>>();
 
                     // Controllers with modern routing
-                    services.AddControllers();
+                    // Ensure controllers from the API assembly are discovered by tests
+                    services.AddControllers()
+                            .AddApplicationPart(typeof(Locations.API.Controllers.LocationController).Assembly);
                 })
                 .Configure(app =>
                 {

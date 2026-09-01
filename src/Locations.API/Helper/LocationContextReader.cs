@@ -18,7 +18,8 @@ namespace Locations.API.Helper
                 using (var r = new StreamReader("locations.json"))
                 {
                     var json = r.ReadToEnd();
-                    locations = JsonSerializer.Deserialize<List<Location>>(json) ?? new List<Location>();
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    locations = JsonSerializer.Deserialize<List<Location>>(json, options) ?? new List<Location>();
                 }
 
                 return (IList<T>) locations;

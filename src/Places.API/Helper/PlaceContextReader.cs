@@ -17,7 +17,8 @@ namespace Places.API.Helper
                 using (var r = new StreamReader("places.json"))
                 {
                     var json = r.ReadToEnd();
-                    placesDtos = JsonSerializer.Deserialize<List<PlacesDto>>(json) ?? new List<PlacesDto>();
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    placesDtos = JsonSerializer.Deserialize<List<PlacesDto>>(json, options) ?? new List<PlacesDto>();
                 }
 
                 var places = new List<Place>();

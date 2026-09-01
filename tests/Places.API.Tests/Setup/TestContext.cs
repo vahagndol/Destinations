@@ -25,27 +25,38 @@ namespace Places.API.Tests.Setup
 
         private void SetUpClient()
         {
+            // Load test configuration using modern ConfigurationBuilder
             var config = new ConfigurationBuilder()
-                .AddJsonFile($"appsettings.Testing.json", optional: false) 
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("appsettings.Testing.json", optional: false)
                 .AddEnvironmentVariables()
                 .Build();
 
-            _server = new TestServer(new WebHostBuilder()
+            // Create test server with modern minimal hosting setup
+            var hostBuilder = new WebHostBuilder()
                 .UseConfiguration(config)
                 .ConfigureServices(services =>
                 {
+                    // Logging
                     services.AddLogging();
+
+                    // Register domain services
                     services.AddScoped<IContextReader<Place>, PlaceContextReader<Place>>();
                     services.AddSingleton<IApplicationDbContext<Place>, ApplicationDbContext<Place>>();
                     services.AddScoped<IRepository<Place>, Repository<Place>>();
                     services.AddScoped<IEntityService<Place>, PlaceService>();
-                    services.AddMvc(options => options.EnableEndpointRouting = false);
+
+                    // Controllers with modern routing
+                    services.AddControllers();
                 })
                 .Configure(app =>
                 {
-                    app.UseMvc();
-                }));
+                    // Modern middleware pipeline for testing
+                    app.UseRouting();
+                    app.UseEndpoints(endpoints => endpoints.MapControllers());
+                });
 
+            _server = new TestServer(hostBuilder);
             Client = _server.CreateClient();
         }
 

@@ -1,17 +1,51 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
+using System;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using Domain.Entities;
+using Infrastructure.Context;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
+using Places.API.Helper;
 
-namespace Places.API
+var builder = WebApplication.CreateBuilder(args);
+
+// Logging
+builder.Logging.AddConsole();
+
+// DI registrations (use scoped so each request gets its own context)
+builder.Services.AddScoped<IContextReader<Place>, PlaceContextReader<Place>>();
+// Keep ApplicationDbContext as singleton if it intentionally holds application-wide in-memory data
+builder.Services.AddSingleton<IApplicationDbContext<Place>, ApplicationDbContext<Place>>();
+builder.Services.AddScoped<IRepository<Place>, Repository<Place>>();
+builder.Services.AddScoped<IEntityService<Place>, PlaceService>();
+
+// Controllers with System.Text.Json (default JSON serializer)
+builder.Services.AddControllers();
+
+// Swagger/OpenAPI
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Places API", Version = "v1" });
+});
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
-    }
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
 }
+else
+{
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Places API V1"));
+
+app.MapControllers();
+
+app.Run();

@@ -1,8 +1,15 @@
 ﻿using System;
 using System.Net.Http;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Domain.Entities;
+using Infrastructure.Context;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
+using Locations.API.Helper;
 
 namespace Locations.API.Tests.Setup
 {
@@ -25,7 +32,19 @@ namespace Locations.API.Tests.Setup
 
             _server = new TestServer(new WebHostBuilder()
                 .UseConfiguration(config)
-                .UseStartup<Locations.API.Startup>());
+                .ConfigureServices(services =>
+                {
+                    services.AddLogging();
+                    services.AddScoped<IContextReader<Location>, LocationContextReader<Location>>();
+                    services.AddScoped<IApplicationDbContext<Location>, ApplicationDbContext<Location>>();
+                    services.AddScoped<IRepository<Location>, Repository<Location>>();
+                    services.AddScoped<IEntityService<Location>, EntityService<Location>>();
+                    services.AddMvc(options => options.EnableEndpointRouting = false);
+                })
+                .Configure(app =>
+                {
+                    app.UseMvc();
+                }));
 
             Client = _server.CreateClient();
         }

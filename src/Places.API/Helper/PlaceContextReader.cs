@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
 using Domain.Entities;
 using Infrastructure.Context;
-using Newtonsoft.Json;
 
 namespace Places.API.Helper
 {
@@ -17,7 +17,7 @@ namespace Places.API.Helper
                 using (var r = new StreamReader("places.json"))
                 {
                     var json = r.ReadToEnd();
-                    placesDtos = JsonConvert.DeserializeObject<List<PlacesDto>>(json);
+                    placesDtos = JsonSerializer.Deserialize<List<PlacesDto>>(json) ?? new List<PlacesDto>();
                 }
 
                 var places = new List<Place>();

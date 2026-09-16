@@ -27,3 +27,29 @@ jobs:
 
       - name: Test
         run: dotnet test Destinations.sln --no-build --configuration Release --verbosity normal
+
+  # The Vue SPA builds independently of the .NET solution (see src/Application/Application.csproj),
+  # so it gets its own job rather than gating build-and-test.
+  build-clientapp:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: src/Application/ClientApp
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: src/Application/ClientApp/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Type-check and build
+        run: npm run build

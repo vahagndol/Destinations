@@ -46,7 +46,11 @@ namespace Application
 
             app.MapControllers();
             app.MapRazorPages();
-            app.MapGet("/", () => Results.Redirect("/index.html")).WithName("root");
+
+            // The Vue SPA (built into wwwroot from ClientApp) uses history-mode routing, so any
+            // non-file path that isn't an endpoint serves index.html. Unknown API routes stay 404.
+            app.MapFallback("api/{**path}", () => Results.NotFound());
+            app.MapFallbackToFile("index.html");
 
             app.Run();
         }

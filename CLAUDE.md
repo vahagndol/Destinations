@@ -21,8 +21,15 @@ dotnet run --project src/Places.API/Places.API.csproj         # http://localhost
 dotnet run --project src/Application/Application.csproj       # https://localhost:65136
 ```
 
-CI (`.github/workflows/ci.yml`) is restore -> build -> test on the solution, Release, .NET 10 SDK.
-The `README.md` run instructions are stale (.NET Core 2.1, port 56986) — trust the above.
+Build the SPA before running the Application (Node 24; see ClientApp below):
+
+```powershell
+cd src/Application/ClientApp; npm ci; npm run build   # type-check + build into ../wwwroot
+```
+
+CI (`.github/workflows/ci.yml`) has two independent jobs: `build-and-test` (restore -> build ->
+test on the solution, Release, .NET 10 SDK) and `build-clientapp` (`npm ci` -> `npm run build`).
+The tooling list at the bottom of `README.md` is stale (.NET Core 2.1) — trust the above.
 
 ## Architecture
 
@@ -31,7 +38,7 @@ Three ASP.NET Core hosts plus two class libraries, wired as an onion:
 - `src/Domain` — `EntityBase` (Id/Name/Summary/ImageUri) and its subclasses `Location`, `Place`.
 - `src/Infrastructure` — the generic data pipeline, all constrained `where T : EntityBase`.
 - `src/Locations.API`, `src/Places.API` — one microservice per entity type.
-- `src/Application` — a BFF that proxies to both APIs and hosts the Angular SPA.
+- `src/Application` — a BFF that proxies to both APIs and hosts the Vue SPA.
 
 ### The generic pipeline (the thing to understand first)
 
@@ -94,15 +101,25 @@ deserialize into domain types.
 - `Nullable` is enabled solution-wide but the `Domain` entities predate it, so builds carry
   nullability warnings. Don't treat them as new breakage.
 
-## ClientApp (Angular) — currently broken
+## ClientApp (Vue 3 + Vite)
 
-`src/Application/ClientApp` is an Angular 5-era app (CLI 1.7, TypeScript 2.5) with a stray
-Dependabot bump of `@angular/core` to `^11.0.5`, so `npm install` / `ng build` do not work. The .NET
-build no longer invokes it (the SPA targets were removed from `Application.csproj`), and
-`src/Application/wwwroot` contains only `favicon.ico` — so the SPA is **not served**, and
-`GET /` (which redirects to `/index.html`) 404s. Components live under `ClientApp/src/app/`
-(`home`, `locations`, `places`, `account`, `nav-menu`) and call the Application's own
-`api/Locations/GetAll` and `api/places/GetAll/{locationId}` routes.
+`src/Application/ClientApp` is a Vue 3 + TypeScript + Vue Router app scaffolded with create-vue.
+It replaced a broken Angular 5 app. Bootstrap 5 and bootstrap-icons come from npm; Bootstrap's
+JavaScript is deliberately not loaded (the nav menu collapses via Vue state).
 
-A full rebuild on a current Angular version is planned but not started; check with the user before
-investing in this directory.
+- **Build output goes straight into `src/Application/wwwroot`** (`vite.config.ts` `build.outDir`,
+  with `emptyOutDir`), which is git-ignored. Put static files like `favicon.ico` in
+  `ClientApp/public/`, never in `wwwroot` — the build wipes it. The .NET build does not run npm,
+  so a fresh clone serves 404s until `npm run build` has run.
+- **Dev loop:** run the Application host, then `npm run dev` (http://localhost:5173); Vite proxies
+  `/api` to https://localhost:65136.
+- **Host routing** (`Application/Program.cs`): `UseStaticFiles` serves the build, unknown `api/**`
+  routes return 404, and everything else falls back to `index.html` for history-mode routing.
+  Keep `UseStaticFiles` — `MapStaticAssets` serves only files known at `dotnet build` time.
+- Views (`src/views/`) load data with `useJson` (`src/composables/useJson.ts`), which re-fetches
+  when a reactive URL changes. `src/assets/page.css` is shared via `<style scoped src>` by the
+  Locations, Places and Account views.
+- The seed data's `imageUri`s point at external sites that no longer serve those images, so the
+  tables show broken images; that's the data, not the client.
+- Node `^22.18.0 || >=24.12.0` (the `engines` range in `package.json`); CI uses Node 24. The
+  Node 20.18 that nvm-windows has installed here is too old for Vite 8.

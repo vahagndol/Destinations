@@ -15,6 +15,13 @@ The application interacts with microservices using HTTP requests.
 
 ## Running the demonstration application
 - Clone this repository.
+- Install [Node.js](https://nodejs.org/) 24 LTS, then build the Vue client app (it is served by Application from `src\Application\wwwroot`):
+```
+cd src\Application\ClientApp
+npm ci
+npm run build
+cd ..\..\..
+```
 - Build projects: 
 ```
 dotnet build src\Locations.API
@@ -39,7 +46,7 @@ Another option:
 3 console should be created:
 - **Locations.API** - http://localhost:5001/swagger/index.html
 - **Places.API** - http://localhost:4001/swagger/index.html
-- **Application** - http://localhost:56986/
+- **Application** - https://localhost:65136/
 
 This solution was developed on Windows 10, using:
 - Visual Studio 15.7.4

@@ -27,7 +27,7 @@
     </Content>
   </ItemGroup>
 
-  <!-- Note: SPA build targets removed. Static files from ClientApp/dist are served via wwwroot.
-       If you need to rebuild the SPA during development, run 'npm install && npm run build' manually in ClientApp folder. -->
+  <!-- Note: SPA build targets removed. The Vue app in ClientApp builds directly into wwwroot (git-ignored).
+       Build it manually before running this host: 'npm ci && npm run build' in the ClientApp folder. -->
 
 </Project>

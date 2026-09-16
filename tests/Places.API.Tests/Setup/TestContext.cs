@@ -41,7 +41,7 @@ namespace Places.API.Tests.Setup
                     services.AddLogging();
 
                     // Register domain services
-                    services.AddScoped<IContextReader<Place>, PlaceContextReader<Place>>();
+                    services.AddSingleton<IContextReader<Place>, PlaceContextReader<Place>>();
                     services.AddSingleton<IApplicationDbContext<Place>, ApplicationDbContext<Place>>();
                     services.AddScoped<IRepository<Place>, Repository<Place>>();
                     services.AddScoped<IEntityService<Place>, PlaceService>();

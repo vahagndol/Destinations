@@ -13,8 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Logging
 builder.Logging.AddConsole();
 
-// DI registrations (use scoped so each request gets its own context)
-builder.Services.AddScoped<IContextReader<Place>, PlaceContextReader<Place>>();
+// DI registrations. The reader must be singleton: it is consumed by the singleton context below,
+// and a singleton cannot depend on a scoped service (Development's scope validation fails at startup).
+builder.Services.AddSingleton<IContextReader<Place>, PlaceContextReader<Place>>();
 // Keep ApplicationDbContext as singleton if it intentionally holds application-wide in-memory data
 builder.Services.AddSingleton<IApplicationDbContext<Place>, ApplicationDbContext<Place>>();
 builder.Services.AddScoped<IRepository<Place>, Repository<Place>>();
